@@ -1,8 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 const RoomCard = ({room}) => {
     const { roomImage, price,roomId } = room;
+    const { id } = useParams();
+    console.log(id);
     return (
       <div>
         <div className="relative">
