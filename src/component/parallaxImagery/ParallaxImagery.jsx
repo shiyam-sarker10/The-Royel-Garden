@@ -19,6 +19,9 @@ const ParallaxImagery = () => {
           </div>
           <div className="bg-black/50 absolute inset-0 "></div>
         </div>
+        <div>
+          <div></div>
+        </div>
       </div>
     );
 };

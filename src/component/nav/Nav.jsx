@@ -82,7 +82,7 @@ const Nav = () => {
               alt=""
             />
             <h1 className="text-cyan-600 font-bold text-xl md:text-2xl drop-shadow-md">
-              LioTech
+              The Royal Garden
             </h1>
           </div>
           <div className="flex items-center gap-4">
