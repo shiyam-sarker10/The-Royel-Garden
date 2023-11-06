@@ -126,9 +126,10 @@ const RoomDetailsCard = ({ sit }) => {
           </p>
           <div className="md:flex items-center space-x-2  rounded-lg w-max">
             <p>Pick Booking Date : </p>
-            <div className="border-blue-50 rounded-2xl  border-4">
+            <div className="border-blue-50 rounded-2xl ">
               <DatePicker
-                className="w-[100px] px-2"
+              showIcon
+                className="w-[150px] text-blue-500 px-2"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
               />
