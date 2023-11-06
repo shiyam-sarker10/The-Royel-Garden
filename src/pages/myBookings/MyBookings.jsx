@@ -19,7 +19,7 @@ const MyBookings =() => {
       <div className="my-20 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
           {myBookingData.map((data) => (
-            <div className="flex    items-center gap-6 shadow-lg p-4 rounded-lg">
+            <div className="flex    items-center gap-6 shadow-md p-4 rounded-lg">
               <div className="">
                 <img
                   className="w-[300px] h-[200px] rounded-lg"
