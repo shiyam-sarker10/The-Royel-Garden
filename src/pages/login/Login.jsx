@@ -1,6 +1,6 @@
 import { Link, useNavigate} from "react-router-dom";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { toast } from "react-toastify";
 
@@ -11,6 +11,12 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Login = () => {
+//  title 
+  useEffect(() => {
+    document.title = "The Royal Garden - Login";
+  }, []);
+
+
   const {signInUser} = useContext(AuthContext)
   const homeNavigate = useNavigate()
 

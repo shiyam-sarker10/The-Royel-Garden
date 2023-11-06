@@ -5,11 +5,18 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import SocialLogin from './../../component/SocialLogin/SocialLogin';
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
+
+
+  useEffect(() => {
+    document.title = "The Royal Garden - Register";
+  }, []);
+
+
   const { createUser, UserUpdate, LogOut } = useContext(AuthContext);
   const loginNavigate = useNavigate();
 
