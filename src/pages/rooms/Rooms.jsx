@@ -11,7 +11,7 @@ const Rooms = () => {
       setRooms(data.data); // Update the state with the fetched data
     });
   }, []);
-
+ 
 const [selection, setSelection] = useState(null);
   console.log("this is select value ", selection);
 
