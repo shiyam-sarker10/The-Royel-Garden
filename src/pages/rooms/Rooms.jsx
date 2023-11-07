@@ -19,7 +19,7 @@ const [selection, setSelection] = useState(null);
 
   return (
     <div className="px-4 my-20">
-      <div className="py-8">
+      <div className="py-8 ">
         <Select
           size="md"
           value={selection}
@@ -43,6 +43,7 @@ const [selection, setSelection] = useState(null);
           return <RoomCard room={room} key={index}></RoomCard>;
         })}
       </div>
+      
     </div>
   );
 };

@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RoomDetailsCard from "./RoomDetailsCard";
+import SitReview from "../../component/review/SitReview.jsx/SitReview";
 
 const RoomDetails = () => {
   const [sits, setSits] = useState([]);
+  console.log("data ayse ?",sits)
   const {id} = useParams()
   const url = `http://localhost:5000/roomSit/${id}`;
   useEffect(() => {
@@ -26,8 +28,8 @@ const RoomDetails = () => {
     const isAvailable = sits.filter(sit => sit.available == true )
   return (
     <div className="px-4 my-20">
-      <div className="lg:flex gap-10 items-center">
-        <div className="w-1/3">
+      <div className="lg:flex gap-10 items-center ">
+        <div className="md:w-1/3">
           <img
             className="w-[500px] border-8 border-blue-500/50 rounded-lg h-[400px]"
             src={roomImage}
@@ -83,6 +85,9 @@ const RoomDetails = () => {
             ></RoomDetailsCard>
           );
         })}
+      </div>
+      <div className="my-40">
+        <SitReview></SitReview>
       </div>
     </div>
   );};

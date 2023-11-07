@@ -8,7 +8,7 @@ const Private = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-[90vh] ">
-        <Spinner className="h-16 w-16 text-blue-400 bg-gradient-to-r from-blue-800/50 to-light-blue-200 rounded-full" />
+        <Spinner className="h-16 w-16 text-blue-400 bg-gradient-to-r  from-blue-800/50 to-light-blue-200 rounded-full" />
       </div>
     );
   }

@@ -12,10 +12,16 @@ const MyBookings =() => {
     const email = user?.email
     console.log(email)
     useEffect(() => {
-      axios.get(`http://localhost:5000/myBooking/${email}`).then((res) => {
-        setMyBookingData(res.data);
-      });
+      axios
+        .get(`http://localhost:5000/myBooking/${email}`)
+        .then((res) => {
+          setMyBookingData(res.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching bookings:", error);
+        });
     }, [email]);
+
 
 
     // update  app
@@ -24,7 +30,7 @@ const MyBookings =() => {
     return (
       <div className="my-20 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
-          {myBookingData.map((data,idx) => ( <MyBookingCard data={data} key={idx}></MyBookingCard>))}
+          {myBookingData?.map((data,idx) => ( <MyBookingCard data={data} key={idx}></MyBookingCard>))}
         </div>
       </div>
     );

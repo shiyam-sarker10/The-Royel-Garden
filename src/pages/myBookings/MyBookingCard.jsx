@@ -4,11 +4,13 @@ import ReactDatePicker from "react-datepicker";
 import { MdSystemUpdateAlt, MdDeleteOutline } from "react-icons/md";
 import { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 
 const MyBookingCard = ({ data }) => {
-  const { _id, bookedDate } = data;
+  const { _id, bookedDate,sitName } = data;
+  console.log(data)
 
       const [startDate, setStartDate] = useState(new Date(bookedDate));
 
@@ -22,8 +24,11 @@ const MyBookingCard = ({ data }) => {
         bookedDate: startDate,
       })
       .then((res) => {
-        console.log(res);
-        alert("hoise");
+        Swal.fire({
+          title: "Update",
+          text: "Your Booking Date has been updated",
+          icon: "success",
+        });
         location.reload()
       });
 
@@ -32,14 +37,41 @@ const MyBookingCard = ({ data }) => {
   };
   const handleDelete = (_id) => {
     console.log(_id)
-    axios
-      .delete(`http://localhost:5000/Booked/${_id}`)
-      .then((res) => {
-        console.log(res);
-        alert("hoise");
-        location.reload()
-      });
 
+
+Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#42A5F5",
+  cancelButtonColor: "#EF5350",
+  confirmButtonText: "Yes, delete it!",
+}).then((result) => {
+  if (result.isConfirmed) {
+    axios.delete(`http://localhost:5000/Booked/${_id}`).then((res) => {
+      axios
+        .put(`http://localhost:5000/bookingSit/${sitName}`, {
+          available: true,
+        })
+        .then((res) => {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  }
+});
+
+
+
+  
       
       
   };
@@ -65,7 +97,7 @@ const MyBookingCard = ({ data }) => {
           </Typography>
           <Typography className="font-normal text-gray-600">
             <span className="font-bold text-lg text-black">
-              Room Booked Date
+              Booked Date
             </span>{" "}
             : {moment(data.bookedDate).format("MMM Do YY")}
           </Typography>
