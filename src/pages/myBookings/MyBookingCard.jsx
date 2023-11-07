@@ -8,17 +8,15 @@ import Swal from "sweetalert2";
 
 
 
-const MyBookingCard = ({ data }) => {
-  const { _id, bookedDate,sitName } = data;
-  console.log(data)
+const MyBookingCard = ({ data,changeData, setChangeData }) => {
+  const { _id, bookedDate, sitName } = data;
+  console.log(data);
 
-      const [startDate, setStartDate] = useState(new Date(bookedDate));
+  const [startDate, setStartDate] = useState(new Date(bookedDate));
 
-
-
-      // Update  
+  // Update
   const handleUpdate = (_id) => {
-    console.log(_id)
+    console.log(_id);
     axios
       .put(`http://localhost:5000/Booked/${_id}`, {
         bookedDate: startDate,
@@ -29,51 +27,44 @@ const MyBookingCard = ({ data }) => {
           text: "Your Booking Date has been updated",
           icon: "success",
         });
-        location.reload()
+        location.reload();
       });
-
-      
-      
   };
   const handleDelete = (_id) => {
-    console.log(_id)
+    console.log(_id);
 
-
-Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#42A5F5",
-  cancelButtonColor: "#EF5350",
-  confirmButtonText: "Yes, delete it!",
-}).then((result) => {
-  if (result.isConfirmed) {
-    axios.delete(`http://localhost:5000/Booked/${_id}`).then((res) => {
-      axios
-        .put(`http://localhost:5000/bookingSit/${sitName}`, {
-          available: true,
-        })
-        .then((res) => {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success",
-          });
-          location.reload();
-        })
-        .catch((err) => {
-          console.log(err);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#42A5F5",
+      cancelButtonColor: "#EF5350",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        axios.delete(`http://localhost:5000/Booked/${_id}`).then((res) => {
+          axios
+            .put(`http://localhost:5000/bookingSit/${sitName}`, {
+              available: true,
+            })
+            .then((res) => {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              
+              const remaining = changeData.filter((item) => item._id !== _id);
+              setChangeData(remaining);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         });
+      }
     });
-  }
-});
-
-
-
-  
-      
-      
   };
   return (
     <div>
@@ -96,10 +87,8 @@ Swal.fire({
             : ${data.sitPrice}
           </Typography>
           <Typography className="font-normal text-gray-600">
-            <span className="font-bold text-lg text-black">
-              Booked Date
-            </span>{" "}
-            : {moment(data.bookedDate).format("MMM Do YY")}
+            <span className="font-bold text-lg text-black">Booked Date</span> :{" "}
+            {moment(data.bookedDate).format("MMM Do YY")}
           </Typography>
           <Typography className="font-normal text-gray-600">
             <div className="md:flex items-center space-x-2  rounded-lg w-max">
@@ -115,7 +104,7 @@ Swal.fire({
             </div>
           </Typography>
         </div>
-      <div className=" space-y-4">
+        <div className=" space-y-4">
           <Button
             onClick={() => {
               handleUpdate(_id);
@@ -127,7 +116,12 @@ Swal.fire({
               <MdSystemUpdateAlt className="text-white/90 text-xl" />
             </span>
           </Button>
-          <Button onClick={()=>{handleDelete(_id)}} className="flex bg-red-400 items-center gap-4">
+          <Button
+            onClick={() => {
+              handleDelete(_id);
+            }}
+            className="flex bg-red-400 items-center gap-4"
+          >
             Delete
             <span className="">
               <MdDeleteOutline className="text-white/90 text-xl" />

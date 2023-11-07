@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -15,6 +15,7 @@ import moment from 'moment/moment';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const RoomDetailsCard = ({ sit }) => {
+  const navigate = useNavigate()
 
   const {user} = useContext(AuthContext)
   const email = user?.email
@@ -47,22 +48,28 @@ const RoomDetailsCard = ({ sit }) => {
     bookedDate,
     email,
   };
+  
 
   const handleBooking = (_id) => {
-    axios
-      .put(`http://localhost:5000/roomIdSit/${_id}`, {
-        available: false,
-      })
-      .then((res) => {
-        axios
-          .post("http://localhost:5000/myBooking", bookedData)
-          .then((res) => {
-            location.reload();
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+   if(user?.email){
+     axios
+       .put(`http://localhost:5000/roomIdSit/${_id}`, {
+         available: false,
+       })
+       .then((res) => {
+         axios
+           .post("http://localhost:5000/myBooking", bookedData)
+           .then((res) => {
+             location.reload();
+           });
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   }
+   else{
+     navigate('/login')
+   }
   };
 
   return (
@@ -93,7 +100,7 @@ const RoomDetailsCard = ({ sit }) => {
             variant="gradient"
             color="green"
             onClick={() => {
-              handleBooking(_id);
+              handleBooking(_id) 
             }}
           >
             Booked confirm

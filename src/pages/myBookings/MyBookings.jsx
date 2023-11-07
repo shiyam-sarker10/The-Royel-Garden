@@ -8,9 +8,13 @@ import MyBookingCard from './MyBookingCard';
 const MyBookings =() => {
 
     const [myBookingData,setMyBookingData] = useState([])
+    
+    
     const {user} = useContext(AuthContext)
     const email = user?.email
     console.log(email)
+
+
     useEffect(() => {
       axios
         .get(`http://localhost:5000/myBooking/${email}`)
@@ -21,6 +25,15 @@ const MyBookings =() => {
           console.error("Error fetching bookings:", error);
         });
     }, [email]);
+    const [changeData, setChangeData] = useState(myBookingData);
+    useEffect(() => {
+      if (myBookingData) {
+        setChangeData(myBookingData);
+      }
+    }, [myBookingData]);
+    
+    
+    
 
 
 
@@ -30,7 +43,14 @@ const MyBookings =() => {
     return (
       <div className="my-20 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
-          {myBookingData?.map((data,idx) => ( <MyBookingCard data={data} key={idx}></MyBookingCard>))}
+          {changeData?.map((data, idx) => (
+            <MyBookingCard
+              data={data}
+              setChangeData={setChangeData}
+              changeData={changeData}
+              key={idx}
+            ></MyBookingCard>
+          ))}
         </div>
       </div>
     );

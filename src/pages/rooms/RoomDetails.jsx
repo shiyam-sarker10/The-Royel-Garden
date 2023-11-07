@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RoomDetailsCard from "./RoomDetailsCard";
 import SitReview from "../../component/review/SitReview.jsx/SitReview";
+import ReviewModel from "../../component/review/reviewModel/ReviewModel";
 
 const RoomDetails = () => {
   const [sits, setSits] = useState([]);
@@ -15,6 +16,9 @@ const RoomDetails = () => {
         setSits(res.data);
       })
   }, []);
+
+// room Data 
+
  const [roomData,setRoomData] = useState([])
   const RoomUrl = `http://localhost:5000/rooms/${id}`;
   useEffect(() => {
@@ -24,6 +28,18 @@ const RoomDetails = () => {
   }, []);
   const { price, imageDescription, roomSize, available, roomImage, roomId } =
     roomData;
+
+// review fetch 
+  const [reviewData, setReviewData] = useState([]);
+  const ReviewUrl = `http://localhost:5000/review`;
+  useEffect(() => {
+    axios.get(ReviewUrl).then((res) => {
+      setReviewData(res.data);
+    });
+  }, []);
+
+
+
 
     const isAvailable = sits.filter(sit => sit.available == true )
   return (
@@ -86,8 +102,15 @@ const RoomDetails = () => {
           );
         })}
       </div>
-      <div className="my-40">
-        <SitReview></SitReview>
+      <div className="my-20">
+        <SitReview roomId={roomId}></SitReview>
+      </div>
+      <div>
+        {
+          reviewData.map((review, index) => {
+            return <ReviewModel review={review}></ReviewModel>;
+          })
+        }
       </div>
     </div>
   );};

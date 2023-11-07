@@ -1,4 +1,3 @@
-// import { Link, useNavigate } from "react-router-dom";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -55,7 +54,7 @@ const Register = () => {
                 .catch((error) => {});
         })
         .catch((error) => {
-          console.log(error)
+          toast.error(error);
         });
     }
   };

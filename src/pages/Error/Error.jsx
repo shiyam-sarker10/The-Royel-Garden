@@ -1,15 +1,14 @@
 import React from 'react';
-import error from '../../../public/error.json'
-import loading from '../../../public/loading.json'
-import Lottie from "lottie-react";
 import { Button } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
+import { ErrorLottie, PrivateLoading } from '../../component/lottie/Lottie';
 
 const Error = () => {
     return (
       <div className="h-[100vh] flex flex-col items-center justify-center">
         <div className="w-1/2">
-          <Lottie animationData={error} />
+          <ErrorLottie></ErrorLottie>
+
         </div>
         <div>
           <Link to="/">
