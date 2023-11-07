@@ -1,15 +1,20 @@
 import { Button, Typography } from "@material-tailwind/react";
 import moment from "moment";
 import ReactDatePicker from "react-datepicker";
-import { MdSystemUpdateAlt } from "react-icons/md";
+import { MdSystemUpdateAlt, MdDeleteOutline } from "react-icons/md";
 import { useState } from "react";
 import axios from "axios";
 
+
+
 const MyBookingCard = ({ data }) => {
-  const { _id } = data;
+  const { _id, bookedDate } = data;
 
-      const [startDate, setStartDate] = useState(new Date());
+      const [startDate, setStartDate] = useState(new Date(bookedDate));
 
+
+
+      // Update  
   const handleUpdate = (_id) => {
     console.log(_id)
     axios
@@ -19,7 +24,23 @@ const MyBookingCard = ({ data }) => {
       .then((res) => {
         console.log(res);
         alert("hoise");
+        location.reload()
       });
+
+      
+      
+  };
+  const handleDelete = (_id) => {
+    console.log(_id)
+    axios
+      .delete(`http://localhost:5000/Booked/${_id}`)
+      .then((res) => {
+        console.log(res);
+        alert("hoise");
+        location.reload()
+      });
+
+      
       
   };
   return (
@@ -62,19 +83,24 @@ const MyBookingCard = ({ data }) => {
             </div>
           </Typography>
         </div>
-        <div>
+      <div className=" space-y-4">
           <Button
             onClick={() => {
               handleUpdate(_id);
             }}
-            className="flex bg-blue-200 items-center gap-4"
+            className="flex bg-blue-400 items-center gap-4"
           >
             UpDate
             <span className="">
               <MdSystemUpdateAlt className="text-white/90 text-xl" />
             </span>
           </Button>
-          <button></button>
+          <Button onClick={()=>{handleDelete(_id)}} className="flex bg-red-400 items-center gap-4">
+            Delete
+            <span className="">
+              <MdDeleteOutline className="text-white/90 text-xl" />
+            </span>
+          </Button>
         </div>
       </div>
     </div>
