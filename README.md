@@ -1,4 +1,4 @@
-### MY WEBSITE --> RideWave
+### MY WEBSITE --> The royal garden
 ## netlify
 
 ## https://assigment-11-28aa2.web.app/
