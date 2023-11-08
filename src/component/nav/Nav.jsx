@@ -81,6 +81,18 @@ const Nav = () => {
       >
         <li>HowItWorks</li>
       </NavLink>
+      <NavLink
+        to={`/contact`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "border-b-4 lg:border-t-4 border-cyan-600"
+            : ""
+        }
+      >
+        <li>Contact</li>
+      </NavLink>
     </ul>
   );
 

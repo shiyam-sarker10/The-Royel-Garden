@@ -10,6 +10,7 @@ import Error from "../pages/Error/Error";
 import Private from "../privet/Private";
 
 import Process from "../pages/HowItWorks/Process/Process";
+import Contact from "../pages/Contact/Contact";
 
 
 const Router = createBrowserRouter([
@@ -41,6 +42,10 @@ const Router = createBrowserRouter([
       {
         path: "howitsworks",
         element: <Process></Process>
+      },
+      {
+        path: "contact",
+        element: <Contact></Contact>
       },
       {
         path: "myBookings",
