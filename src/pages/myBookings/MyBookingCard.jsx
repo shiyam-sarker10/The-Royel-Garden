@@ -2,15 +2,15 @@ import { Button, Typography } from "@material-tailwind/react";
 import moment from "moment";
 import ReactDatePicker from "react-datepicker";
 import { MdSystemUpdateAlt, MdDeleteOutline } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
-
-const MyBookingCard = ({ data,changeData, setChangeData }) => {
+const MyBookingCard = ({ data, changeData, setChangeData }) => {
   const { _id, bookedDate, sitName } = data;
   console.log(data);
+
+  const currentDate = moment(new Date()).format("MMM Do YY");
 
   const [startDate, setStartDate] = useState(new Date(bookedDate));
 
@@ -43,29 +43,37 @@ const MyBookingCard = ({ data,changeData, setChangeData }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        
-        axios.delete(`http://localhost:5000/Booked/${_id}`).then((res) => {
-          axios
-            .put(`http://localhost:5000/bookingSit/${sitName}`, {
-              available: true,
-            })
-            .then((res) => {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success",
+        if (moment(bookedDate).format("MMM Do YY") === currentDate) {
+          return Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You have already booked this date",
+          });
+        } else {
+          axios.delete(`http://localhost:5000/Booked/${_id}`).then((res) => {
+            axios
+              .put(`http://localhost:5000/bookingSit/${sitName}`, {
+                available: true,
+              })
+              .then((res) => {
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success",
+                });
+
+                const remaining = changeData.filter((item) => item._id !== _id);
+                setChangeData(remaining);
+              })
+              .catch((err) => {
+                console.log(err);
               });
-              
-              const remaining = changeData.filter((item) => item._id !== _id);
-              setChangeData(remaining);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        });
+          });
+        }
       }
     });
   };
+
   return (
     <div>
       <div className="flex    items-center gap-6 shadow-md p-4 rounded-lg">

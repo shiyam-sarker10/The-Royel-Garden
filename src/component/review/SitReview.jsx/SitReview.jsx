@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Textarea } from "@material-tailwind/react";
 import { FaStar } from "react-icons/fa";
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
@@ -29,11 +29,35 @@ const SitReview = ({ roomId }) => {
     const review = { comment, name, commonId, timeStamp, rating, email, photo };
     axios.post("http://localhost:5000/review",review)
     .then(res=>{
-        console.log(res.data)
         window.location.reload()
     })
 
   };
+
+
+
+
+  const [isCanReview, setIsCanReview] = useState([]);
+  const [isTrue,setIsFalse] = useState(false)
+  useEffect(() => {
+    if (isCanReview.length == 0) {
+      return setIsFalse(true);
+    } else {
+      return setIsFalse(false);
+    }
+  }, [isCanReview]);
+  
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/reviewBooking/${user?.email}`)
+      .then((res) => {
+        setIsCanReview(res.data);
+      });
+  }, [user]);
+
+
+
   return (
     <div>
       <div className=" py-5">
@@ -59,12 +83,8 @@ const SitReview = ({ roomId }) => {
 
           <Textarea name="comment" color="blue" label="Comment" />
           <div>
-            <Button className="bg-blue-400">
-              <input
-                type="submit"
-                value="Submit"
-                className='h-full w-full'
-              />
+            <Button className="bg-blue-400" disabled={isTrue}>
+              <input type="submit" value="Submit" className="h-full w-full" />
             </Button>
           </div>
         </div>

@@ -31,7 +31,7 @@ const RoomDetails = () => {
 
 // review fetch 
   const [reviewData, setReviewData] = useState([]);
-  const ReviewUrl = `http://localhost:5000/review`;
+  const ReviewUrl = `http://localhost:5000/review/${id}`;
   useEffect(() => {
     axios.get(ReviewUrl).then((res) => {
       setReviewData(res.data);

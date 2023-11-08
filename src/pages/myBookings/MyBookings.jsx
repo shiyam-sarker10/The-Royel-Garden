@@ -17,7 +17,7 @@ const MyBookings =() => {
 
     useEffect(() => {
       axios
-        .get(`http://localhost:5000/myBooking/${email}`)
+        .get(`http://localhost:5000/myBooking/${email}`,{withCredentials:true})
         .then((res) => {
           setMyBookingData(res.data);
         })

@@ -44,11 +44,13 @@ const Register = () => {
           toast.success("SuccessFully registered");
           UserUpdate(name, photo)
             .then((result) => {
-              loginNavigate("/login");
               console.log(result);
+              loginNavigate("/login");
 
             })
-              .catch(() => {});
+              .catch((error) => {
+                conso
+              });
               LogOut()
                 .then((result) => {})
                 .catch((error) => {});

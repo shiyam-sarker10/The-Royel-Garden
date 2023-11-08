@@ -2,14 +2,14 @@ import { Rating } from '@material-tailwind/react';
 import React from 'react';
 
 const ReviewCarsoul = ({ user }) => {
-    const { image, name, rating, feedback } = user;
+    const { photo, name, rating, comment } = user;
   return (
     <div class="relative max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <blockquote class="text-center lg:mx-auto lg:w-3/5">
         <div className="w-[100px] mx-auto">
           <img
             className=" h-[100px] object-cover object-top  rounded-full"
-            src={image}
+            src={photo}
             alt=""
           />
         </div>
@@ -31,7 +31,7 @@ const ReviewCarsoul = ({ user }) => {
               />
             </svg>
             <span class="relative z-10 italic text-gray-800 dark:text-gray-200">
-              {feedback}
+              {comment}
             </span>
           </p>
         </div>

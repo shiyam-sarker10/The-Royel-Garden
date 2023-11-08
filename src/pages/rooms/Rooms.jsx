@@ -17,6 +17,7 @@ const [selection, setSelection] = useState(null);
 
 
 
+
   return (
     <div className="px-4 my-20">
       <div className="py-8 ">
@@ -40,7 +41,12 @@ const [selection, setSelection] = useState(null);
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {rooms?.map((room, index) => {
-          return <RoomCard room={room} key={index}></RoomCard>;
+          return (
+            <RoomCard
+              room={room}
+              key={index}
+            ></RoomCard>
+          );
         })}
       </div>
       

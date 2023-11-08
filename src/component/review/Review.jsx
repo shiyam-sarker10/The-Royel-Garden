@@ -6,7 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Review = () => {
     const [userData,setUserData] = useState([])
     useEffect(()=>{
-        fetch("/fake.json")
+        fetch("http://localhost:5000/review")
           .then((res) => res.json())
           .then((data) => setUserData(data));
     },[])

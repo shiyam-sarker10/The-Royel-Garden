@@ -12,6 +12,7 @@ import { AuthContext } from './../../AuthProvider/AuthProvider';
 const Nav = () => {
   const { user, LogOut } = useContext(AuthContext);
   const [openNav, setOpenNav] = React.useState(false);
+  console.log(user?.photoURL);
   const handleLogOut = () => {
     LogOut()
       .then((result) => {})
@@ -24,6 +25,7 @@ const Nav = () => {
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+  
 
   const navList = (
     <ul
@@ -94,7 +96,9 @@ const Nav = () => {
                     <div className="flex flex-wrap items-center gap-2">
                       <img
                         className="w-[50px] rounded-full border-6 border-blue-600"
-                        src={user.photoURL}
+                        src={
+                          user.photoURL
+                        }
                         alt="User Profile"
                       />
                       <p
@@ -122,7 +126,6 @@ const Nav = () => {
                   </Link>
                 )}
               </div>
- 
             </div>
             <IconButton
               variant="text"

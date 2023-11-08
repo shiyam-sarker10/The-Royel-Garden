@@ -1,10 +1,10 @@
 import { Rating } from '@material-tailwind/react';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import axios from 'axios';
 
 const ReviewModel = ({ review }) => {
-    const {user} = useContext(AuthContext)
-    const 
+    
     const { comment, name, commonId, timeStamp, rating, email,photo} = review
   return (
     <div className="border-l-4 border-gray-800 p-5 ml-5 md:w-1/2">
