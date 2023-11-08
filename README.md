@@ -1,6 +1,13 @@
 ### MY WEBSITE --> RideWave
+## netlify
 
 ## https://assigment-11-28aa2.web.app/
+
+## firebase 
+
+## https://the-royel-garden.netlify.app/
+
+
 
 - In Home page: header, popular services, our features, get out app, FAQ, Contact Form & React leaflet (MAP)
 
@@ -10,6 +17,6 @@
 
 - Dashboard -> Add product -> there has a form to add a service. any athentic user can add his service here.
 
-- Dashboard -> Manage service -> there has user(seller) services and user can edit(update) & delete there services
+- Dashboard -> Manage service = there has user(seller) services and user can edit(update) & delete there services
 
 - login & register -> for user authentication
