@@ -15,7 +15,7 @@
 
 - Dashboard -> My Schedule -> there has user bookings (user can see his bookings) & also there services if they provide. here he can delete his bookings and his service bookings of other users
 
-- Dashboard -> Add product -> there has a form to add a service. any athentic user can add his service here.
+- Dashboard -> Add product = there has a form to add a service. any athentic user can add his service here.
 
 - Dashboard -> Manage service = there has user(seller) services and user can edit(update) & delete there services
 
