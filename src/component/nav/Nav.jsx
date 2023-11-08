@@ -9,6 +9,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from './../../AuthProvider/AuthProvider';
 
 
+
 const Nav = () => {
   const { user, LogOut } = useContext(AuthContext);
   const [openNav, setOpenNav] = React.useState(false);
@@ -29,7 +30,7 @@ const Nav = () => {
 
   const navList = (
     <ul
-      className={`mt-2 mb-4 flex font-bold flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-10 
+      className={`mt-2 mb-4 flex text-black font-bold flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-10 
         justify-center items-center`}
     >
       <NavLink
@@ -67,6 +68,18 @@ const Nav = () => {
         }
       >
         <li>My Bookings</li>
+      </NavLink>
+      <NavLink
+        to={`/howitsworks`}
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "border-b-4 lg:border-t-4 border-cyan-600"
+            : ""
+        }
+      >
+        <li>HowItWorks</li>
       </NavLink>
     </ul>
   );

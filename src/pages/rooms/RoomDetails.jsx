@@ -102,15 +102,17 @@ const RoomDetails = () => {
           );
         })}
       </div>
-      <div className="my-20">
+      <div className="my-20 px-4">
         <SitReview roomId={roomId}></SitReview>
       </div>
       <div>
-        {
+        {reviewData?.length > 0 ? (
           reviewData.map((review, index) => {
-            return <ReviewModel review={review}></ReviewModel>;
+            return <ReviewModel key={index} review={review} />;
           })
-        }
+        ) : (
+          <h1 className="text-3xl font-bold text-gray-500">No Review Available</h1>
+        )}
       </div>
     </div>
   );};

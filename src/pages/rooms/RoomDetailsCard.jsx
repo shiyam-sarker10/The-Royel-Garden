@@ -75,7 +75,7 @@ const RoomDetailsCard = ({ sit }) => {
   return (
     <div>
       <Dialog open={open} handler={handleOpen}>
-        <DialogHeader>Long Dialog</DialogHeader>
+        <DialogHeader>Your Booking Preview</DialogHeader>
         <DialogBody className="flex justify-center items-center gap-4">
           <div className="">
             <img className="w-[250px] rounded-lg" src={image} alt="" />

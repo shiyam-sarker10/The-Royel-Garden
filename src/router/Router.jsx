@@ -9,6 +9,8 @@ import MyBookings from "../pages/myBookings/MyBookings";
 import Error from "../pages/Error/Error";
 import Private from "../privet/Private";
 
+import Process from "../pages/HowItWorks/Process/Process";
+
 
 const Router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ const Router = createBrowserRouter([
       {
         path: "room/:id",
         element: <RoomDetails></RoomDetails>,
+      },
+      {
+        path: "howitsworks",
+        element: <Process></Process>
       },
       {
         path: "myBookings",
