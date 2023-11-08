@@ -9,7 +9,7 @@ const RoomDetails = () => {
   const [sits, setSits] = useState([]);
   console.log("data ayse ?",sits)
   const {id} = useParams()
-  const url = `http://localhost:5000/roomSit/${id}`;
+  const url = `https://ass-11-server-eight.vercel.app/roomSit/${id}`;
   useEffect(() => {
     axios.get(url)
     .then((res) => {
@@ -20,7 +20,7 @@ const RoomDetails = () => {
 // room Data 
 
  const [roomData,setRoomData] = useState([])
-  const RoomUrl = `http://localhost:5000/rooms/${id}`;
+  const RoomUrl = `https://ass-11-server-eight.vercel.app/rooms/${id}`;
   useEffect(() => {
     axios.get(RoomUrl).then((res) => {
       setRoomData(res.data);
@@ -31,7 +31,7 @@ const RoomDetails = () => {
 
 // review fetch 
   const [reviewData, setReviewData] = useState([]);
-  const ReviewUrl = `http://localhost:5000/review/${id}`;
+  const ReviewUrl = `https://ass-11-server-eight.vercel.app/review/${id}`;
   useEffect(() => {
     axios.get(ReviewUrl).then((res) => {
       setReviewData(res.data);

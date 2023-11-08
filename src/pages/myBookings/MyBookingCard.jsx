@@ -18,7 +18,7 @@ const MyBookingCard = ({ data, changeData, setChangeData }) => {
   const handleUpdate = (_id) => {
     console.log(_id);
     axios
-      .put(`http://localhost:5000/Booked/${_id}`, {
+      .put(`https://ass-11-server-eight.vercel.app/Booked/${_id}`, {
         bookedDate: startDate,
       })
       .then((res) => {
@@ -50,9 +50,9 @@ const MyBookingCard = ({ data, changeData, setChangeData }) => {
             text: "You have already booked this date",
           });
         } else {
-          axios.delete(`http://localhost:5000/Booked/${_id}`).then((res) => {
+          axios.delete(`https://ass-11-server-eight.vercel.app/Booked/${_id}`).then((res) => {
             axios
-              .put(`http://localhost:5000/bookingSit/${sitName}`, {
+              .put(`https://ass-11-server-eight.vercel.app/bookingSit/${sitName}`, {
                 available: true,
               })
               .then((res) => {

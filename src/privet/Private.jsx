@@ -14,11 +14,11 @@ const Private = ({ children }) => {
     );
   }
 
-  if (!user) {
-    return <Navigate to="/login" />;
+  if (user && !loading) {
+    return children;
   }
-
-  return children;
+return <Navigate to="/login" />;
+  
 };
 
 export default Private;

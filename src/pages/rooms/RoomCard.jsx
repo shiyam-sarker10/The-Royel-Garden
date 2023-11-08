@@ -9,7 +9,7 @@ const RoomCard = ({ room }) => {
   const [reviewData,setReviewData] = useState(null)
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/review/${roomId}`)
+    axios.get(`https://ass-11-server-eight.vercel.app/review/${roomId}`)
     .then((res) => {
       setReviewData(res.data);
     });

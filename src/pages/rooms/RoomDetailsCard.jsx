@@ -31,7 +31,7 @@ const RoomDetailsCard = ({ sit }) => {
 
   const { id } = useParams();
 
-  const url = `http://localhost:5000/rooms/${id}`;
+  const url = `https://ass-11-server-eight.vercel.app/rooms/${id}`;
   useEffect(() => {
     axios.get(url).then((res) => {
       setRoomSit(res.data);
@@ -53,12 +53,12 @@ const RoomDetailsCard = ({ sit }) => {
   const handleBooking = (_id) => {
    if(user?.email){
      axios
-       .put(`http://localhost:5000/roomIdSit/${_id}`, {
+       .put(`https://ass-11-server-eight.vercel.app/roomIdSit/${_id}`, {
          available: false,
        })
        .then((res) => {
          axios
-           .post("http://localhost:5000/myBooking", bookedData)
+           .post("https://ass-11-server-eight.vercel.app/myBooking", bookedData)
            .then((res) => {
              location.reload();
            });

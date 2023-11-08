@@ -17,9 +17,10 @@ const MyBookings =() => {
 
     useEffect(() => {
       axios
-        .get(`http://localhost:5000/myBooking/${email}`,{withCredentials:true})
+        .get(`https://ass-11-server-eight.vercel.app/myBooking/${email}`,{withCredentials:true})
         .then((res) => {
           setMyBookingData(res.data);
+          console.log("this is booking",res.data)
         })
         .catch((error) => {
           console.error("Error fetching bookings:", error);
@@ -33,9 +34,6 @@ const MyBookings =() => {
     }, [myBookingData]);
     
     
-    
-
-
 
     // update  app
 
@@ -43,14 +41,18 @@ const MyBookings =() => {
     return (
       <div className="my-20 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
-          {changeData?.map((data, idx) => (
-            <MyBookingCard
-              data={data}
-              setChangeData={setChangeData}
-              changeData={changeData}
-              key={idx}
-            ></MyBookingCard>
-          ))}
+          {changeData?.length > 0 ? (
+            changeData?.map((data, idx) => (
+              <MyBookingCard
+                data={data}
+                setChangeData={setChangeData}
+                changeData={changeData}
+                key={idx}
+              ></MyBookingCard>
+            ))
+          ) : (
+            <h1 className='text-center font-bold text-2xl col-span-2 text-blue-500'>You haven't made any Booking yet</h1>
+          )}
         </div>
       </div>
     );

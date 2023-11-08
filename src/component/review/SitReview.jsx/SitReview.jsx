@@ -27,7 +27,7 @@ const SitReview = ({ roomId }) => {
     console.log("time dekhaw", timeStamp)
     const rating = userRating;
     const review = { comment, name, commonId, timeStamp, rating, email, photo };
-    axios.post("http://localhost:5000/review",review)
+    axios.post("https://ass-11-server-eight.vercel.app/review",review)
     .then(res=>{
         window.location.reload()
     })
@@ -50,7 +50,7 @@ const SitReview = ({ roomId }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/reviewBooking/${user?.email}`)
+      .get(`https://ass-11-server-eight.vercel.app/reviewBooking/${user?.email}`)
       .then((res) => {
         setIsCanReview(res.data);
       });

@@ -5,10 +5,11 @@ import { Option, Select } from "@material-tailwind/react";
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([]);
-  const url = "http://localhost:5000/rooms";
+  const url = "https://ass-11-server-eight.vercel.app/rooms";
   useEffect(() => {
     axios.get(url).then((data) => {
       setRooms(data.data); // Update the state with the fetched data
+      console.log(data)
     });
   }, []);
  

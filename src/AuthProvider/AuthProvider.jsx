@@ -69,7 +69,7 @@ useEffect(() => {
 
     if(currentUser){
       console.log(userEmail)
-      axios.post("http://localhost:5000/jwt", userEmail, {withCredentials:true})
+      axios.post("https://ass-11-server-eight.vercel.app/jwt", userEmail, {withCredentials:true})
       .then(res => {
         console.log("tihs is token", res.data)
       }).catch(error=>{
@@ -78,7 +78,7 @@ useEffect(() => {
 
     }
     else{
-      axios.post("http://localhost:5000/logout", userEmail, {
+      axios.post("https://ass-11-server-eight.vercel.app/logout", userEmail, {
         withCredentials: true,
       });
     }
