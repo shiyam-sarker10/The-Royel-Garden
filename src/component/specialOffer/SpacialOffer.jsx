@@ -2,21 +2,22 @@ import React from 'react';
 
 const SpacialOffer = () => {
     return (
-      <div>
+      <div data-aos="flip-left">
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col text-center w-full mb-20">
               <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4  mx-auto py-4  text-gray-900">
                 Spacial Offer
               </h1>
-              <p className='text-xl font-bold  text-blue-500'>Get 20% Discount on this Rooms </p>
+              <p className="text-xl font-bold  text-blue-500">
+                Get 20% Discount on this Rooms{" "}
+              </p>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                 Indulge in a world of luxury with our exclusive The Royal
                 Garden. Book now to enjoy remarkable discounts and complimentary
                 perks, ensuring an unforgettable stay. Don't miss this special
                 offer!
               </p>
-
             </div>
             <div className="flex flex-wrap -m-4">
               <div className="lg:w-1/3 sm:w-1/2 p-4">

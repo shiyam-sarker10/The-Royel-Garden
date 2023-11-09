@@ -11,7 +11,7 @@ const Review = () => {
           .then((data) => setUserData(data));
     },[])
     return (
-      <div className="my-20">
+      <div className="my-20" data-aos="fade-down">
         <div className="space-y-10">
           <h1 className=" w-1/2 text-3xl md:text-4xl font-bold md:w-1/4 mx-auto text-center py-4 border-b-4 border-black">
             User Testimonial

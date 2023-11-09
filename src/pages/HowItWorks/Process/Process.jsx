@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 const Process = () => {
    useEffect(() => {
-     document.title = "The Royal Garden - Process";
+     document.title = "The Royal Garden - How Its Works";
    }, []);
   return (
     <Tabs>

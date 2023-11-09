@@ -3,6 +3,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import axios from 'axios';
 
 import MyBookingCard from './MyBookingCard';
+import { NoProduct } from '../../component/lottie/Lottie';
 
 
 const MyBookings =() => {
@@ -34,7 +35,9 @@ const MyBookings =() => {
     }, [myBookingData]);
     
     
-
+    useEffect(() => {
+      document.title = "The Royal Garden - My Bookings";
+    }, []);
     // update  app
 
     
@@ -51,7 +54,16 @@ const MyBookings =() => {
               ></MyBookingCard>
             ))
           ) : (
-            <h1 className='text-center font-bold text-2xl col-span-2 text-blue-500'>You haven't made any Booking yet</h1>
+            <div className="h-[80vh] col-span-2 flex flex-col items-center ">
+              <div className='md:w-1/4'>
+                <NoProduct></NoProduct>
+              </div>
+              <div>
+                <h1 className="text-center font-bold text-gray-500 text-3xl col-span-2">
+                  You haven't made any Booking yet
+                </h1>
+              </div>
+            </div>
           )}
         </div>
       </div>
