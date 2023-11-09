@@ -57,31 +57,24 @@ const AuthProvider = ({children}) => {
     }
 
 useEffect(() => {
-  
   const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-    
-    
-    setUser(currentUser);
-    setLoading(false);
+    const userEmail = currentUser?.email || user?.email;
+    const loggedInUser = { email: userEmail };
 
-    const emailUser = currentUser?.email || user?.email
-    const userEmail = { email: emailUser };
-
-    if(currentUser){
-      console.log(userEmail)
-      axios.post("https://ass-11-server-eight.vercel.app/jwt", userEmail, {withCredentials:true})
-      .then(res => {
-        console.log("tihs is token", res.data)
-      }).catch(error=>{
-        console.log(error);
-      })
-
-    }
-    else{
-      axios.post("https://ass-11-server-eight.vercel.app/logout", userEmail, {
+    if (currentUser) {
+      axios.post("https://ass-11-server-eight.vercel.app/jwt", loggedInUser, {
         withCredentials: true,
       });
+    } else {
+      axios
+        .post("https://ass-11-server-eight.vercel.app/logout", loggedInUser, {
+          withCredentials: true,
+        })
+        .then((response) => console.log(response.data))
+        .catch((error) => console.log(error));
     }
+    setLoading(false);
+    setUser(currentUser);
   });
   return () => {
     return unSubscribe();

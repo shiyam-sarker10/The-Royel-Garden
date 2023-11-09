@@ -12,6 +12,10 @@ const Rooms = () => {
       console.log(data)
     });
   }, []);
+
+     useEffect(() => {
+       document.title = "The Royal Garden - rooms";
+     }, []);
  
 const [selection, setSelection] = useState(null);
   console.log("this is select value ", selection);

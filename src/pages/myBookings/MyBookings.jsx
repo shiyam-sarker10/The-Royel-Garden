@@ -17,7 +17,7 @@ const MyBookings =() => {
 
     useEffect(() => {
       axios
-        .get(`https://ass-11-server-eight.vercel.app/myBooking/${email}`,{withCredentials:true})
+        .get(`https://ass-11-server-eight.vercel.app/myBooking/${email}`, {withCredentials:true})
         .then((res) => {
           setMyBookingData(res.data);
           console.log("this is booking",res.data)

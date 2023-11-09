@@ -1,8 +1,11 @@
 import React from "react";
 import { Tab, Tabs } from "./../Tab/Tab";
-import WorksCards from "../Cards/WorksCards";
+import { useEffect } from "react";
 
 const Process = () => {
+   useEffect(() => {
+     document.title = "The Royal Garden - Process";
+   }, []);
   return (
     <Tabs>
       <Tab

@@ -1,5 +1,9 @@
+import { useEffect } from 'react';
 import { FaMapMarker,FaPhone,FaEnvelope } from 'react-icons/fa';
 const Contact = () => {
+   useEffect(() => {
+     document.title = "The Royal Garden - Contact";
+   }, []);
   return (
     <div className='home-bg'>
       <div className="container my-24 mx-auto md:px-6">
