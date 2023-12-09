@@ -7,7 +7,14 @@
 
 ## https://the-royel-garden.netlify.app/
 
+## Techs Used :
+<p align="center">
+  <img alt="My Skills" src="https://skillicons.dev/icons?i=react,tailwindcss,javascript,firebase,express,mongodb&perline=4">
+</p>
 
+
+
+## Features :
 
 - In Home page: header, popular services, our features, get out app, FAQ, Contact Form & React leaflet (MAP)
 
