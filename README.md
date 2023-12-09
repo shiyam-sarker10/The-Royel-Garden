@@ -1,9 +1,14 @@
-### MY WEBSITE --> The royal garden
-## netlify
+# The Royal Garden
+
+### The Royal Garden is  a project that is similar to a real-time online hotel booking system where users can book hotel and other thing s
+
+
+
+## Live Link 1
 
 ## https://assigment-11-28aa2.web.app/
 
-## firebase 
+## Live Link 2 
 
 ## https://the-royel-garden.netlify.app/
 
@@ -16,13 +21,13 @@
 
 ## Features :
 
-- In Home page: header, popular services, our features, get out app, FAQ, Contact Form & React leaflet (MAP)
+- In-Home page: header, popular services, our features, get out app, FAQ, Contact Form & React leaflet (MAP)
 
-- In Service Page: All services are shown and there has filtering functionality by searching by service name. Here, by clicking on details btn user will redirect to details page and they can book the service
+- In Service Page: All services are shown and there is filtering functionality by searching by service name. Here, by clicking on details btn user will redirect to details page and they can book the service
 
-- Dashboard -> My Schedule = there has user bookings (user can see his bookings) & also there services if they provide. here he can delete his bookings and his service bookings of other users
+- Dashboard -> My Schedule = there are user bookings (user can see his bookings) & also there services if they provide. here he can delete his bookings and his service bookings of other users
 
-- Dashboard -> Add product = there has a form to add a service. any athentic user can add his service here.
+- Dashboard -> Add product = there is a form to add a service. any authentic user can add his service here.
 
 - Dashboard -> Manage service = there has user(seller) services and user can edit(update) & delete there services
 
