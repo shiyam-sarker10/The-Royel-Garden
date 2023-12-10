@@ -1,6 +1,6 @@
 # The Royal Garden
 
-### The Royal Garden is  a project that is similar to a real-time online hotel booking system where users can book hotel and other thing s
+### The Royal Garden is  a project that is similar to a real-time online hotel booking system where users can book hotels digitally
 
 
 
